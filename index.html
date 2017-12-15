@@ -5,27 +5,44 @@
 		<title>Document</title>
 		<link href="favicon.ico" rel="shortcut icon">
 		<link rel="stylesheet" type="text/css" href="css/normalize.css">
+		<link rel="stylesheet" type="text/css" href="css/base.css">
+		<link rel="stylesheet" type="text/css" href="css/layout.css">
 	</head>
 	<body>
 		<header>
 			<div>
-				<h1>Google Search</h1>
-				<form action="GET" role="search">
-					<div>
-						<input type="search" id="search" name="q" placeholder="SEARCH PLACEHOLDER" aria-label="Search through site content">
-						<button>Search</button>
-					</div>
-				</form>
-				<div class="user-navigation"></div>
+				<div class="logo">
+					<h1>
+						<span class="screen-reader">Google</span>
+						<a href="www.google.com" class="logo" title="Go to Google Home">
+							<img src="images/google-logo.png" alt="Google">
+						</a>
+					</h1>
+				</div>
+				<div class="search">
+					<form action="GET" role="search__form">
+						<div>
+							<input type="search" id="search" name="q" placeholder="SEARCH PLACEHOLDER" aria-label="Search through site content">
+							<button>Search</button>
+						</div>
+					</form>
+					<div class="search__voice"></div>
+					<div class="search__image"></div>
+				</div>
+				<div class="user-nav">
+					<ul>
+						<li>ic1</li>
+						<li>ic2</li>
+					</ul>
+				</div>
 			</div>
-			<div>
-				<ul class="search-options">
-					<li>Search option 1</li>
-					<li>Search option 2</li>
-				</ul>
-			</div>
+			<div class="search-options"></div>
 		</header>
-		<div class="main-content"></div>
+
+		<div class="main-content">
+			<!-->Images geos her</!-->
+			<!-->Load more button here</!-->
+		</div>
 		<footer>
 			<div class="country">EGYPT</div>
 			<div class="site-map"><ul>
