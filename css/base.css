@@ -1,0 +1,176 @@
+/**** General Resets ****/
+*,
+*:after, *:before {
+	-webkit-box-sizing: border-box;
+			box-sizing: border-box;
+}
+
+::-webkit-input-placeholder {
+	text-transform: uppercase;
+	font-family: 'Karla', sans-serif;
+	font-weight: normal;
+	color: #000;
+	font-size: 15px;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+	text-transform: uppercase;
+	font-family: 'Karla', sans-serif;
+	font-weight: normal;
+	color: #000;
+	font-size: 15px;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+	text-transform: uppercase;
+	font-family: 'Karla', sans-serif;
+	font-weight: normal;
+	color: #000;
+	font-size: 15px;
+}
+
+:-ms-input-placeholder {
+	text-transform: uppercase;
+	font-family: 'Karla', sans-serif;
+	font-weight: normal;
+	color: #000;
+	font-size: 15px;
+}
+
+button {
+	border: none;
+	outline: none;
+	padding: 0;
+}
+
+*:focus {
+	outline: none;
+}
+
+ul, ul li {
+	list-style: none;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+	-webkit-transition: all 0.1s linear;
+	transition: all 0.1s linear;
+}
+a:hover {
+	-webkit-transition: all 0.1s linear;
+	transition: all 0.1s linear;
+}
+
+img {
+	vertical-align: bottom;
+}
+
+textarea {
+	resize: none;
+}
+
+/**** Clearing floats ****/
+.clear-fix::before,
+.clear-fix::after {
+	content: "";
+	display: table;
+}
+.clear-fix::after{
+	clear: both;
+}
+
+/**** Grid System ****/
+.row {
+	width: 100%;
+}
+.row::before,
+.row::after {
+	content: "";
+	display: table;
+}
+.row::after{
+	clear: both;
+}
+
+/* 1- This is an attribute selector */
+[class*='col-'] { /* 1 */
+	float: left;
+	margin: 0 2.564102564% 0 0;
+	display: block;
+}
+
+/* 1- Floats last ".col-" to the right */
+.row [class*='col-']:last-of-type { /* 1 */
+	margin-right: 0;
+	float: right;
+}
+
+.col-12 {
+	width: 100%;
+}
+.col-11 {
+	width: 91.45299145299145%;
+}
+.col-10 {
+	width: 82.90598290598291%;
+}
+.col-9 {
+	width: 74.35897435897436%;
+}
+.col-8 {
+	width: 65.81196581196582%;
+}
+.col-7 {
+	width: 57.26495726495726%;
+}
+.col-6 {
+	width: 48.717948717948715%;
+}
+.col-5 {
+	width: 40.17094017094017%;
+}
+.col-4 {
+	width: 31.623931623931625%;
+}
+.col-3 {
+	width: 23.076923076923077%;
+}
+.col-2 {
+	width: 14.52991452991453%;
+}
+.col-1 {
+	width: 5.982905982905983%;
+}
+
+
+/**** Basic Styles ****/
+/*
+Visually hides text,
+however text will be still read by screen readers
+Source: https://css-tricks.com/places-its-tempting-to-use-display-none-but-dont/
+*/
+.screen-reader {
+	position: absolute;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	width: 1px;
+	margin: -1px;
+	padding: 0;
+	border: 0;
+}
+
+.link_overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	text-decoration: none;
+	z-index: 0;
+	background-color: white;
+	opacity: 0;
+	width: 100%;
+	height: 100%;
+}
