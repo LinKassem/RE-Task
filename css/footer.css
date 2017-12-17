@@ -1,0 +1,41 @@
+footer {
+	background-color: #f2f2f2;
+	position: relative;
+	height: 84px;
+}
+
+footer a:hover {
+	color: #333;
+}
+
+.country,
+.site-map {
+	border-top: 1px solid #e4e4e4;
+	padding-left: 167px;
+	height: 42px;
+	line-height: 42px;
+}
+
+.country {
+	text-transform: capitalize;
+	font-size: 15px;
+}
+
+.site-map {
+	color: #777;
+	font-size: small;
+}
+
+.site-map ul {
+	margin: 0;
+	padding-left: 0;
+}
+
+.site-map ul li {
+	display: inline-block;
+	margin-right: 23px;
+}
+
+.site-map ul li::first-letter {
+	text-transform: capitalize;
+}

@@ -11,6 +11,10 @@ header ul li {
 	display: inline-block;
 }
 
+header a:hover {
+	color: #222;
+}
+
 header .header .logo,
 header .header .search {
 	float: left;

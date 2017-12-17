@@ -1,0 +1,4 @@
+.main-content {
+	min-height: 100%;
+	margin-bottom: -84px; /* negative height of footer */
+}
