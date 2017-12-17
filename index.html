@@ -6,11 +6,13 @@
 		<link href="favicon.ico" rel="shortcut icon">
 		<link rel="stylesheet" type="text/css" href="css/normalize.css">
 		<link rel="stylesheet" type="text/css" href="css/base.css">
+		<link rel="stylesheet" type="text/css" href="css/header.css">
+		<link rel="stylesheet" type="text/css" href="css/icons.css">
 		<link rel="stylesheet" type="text/css" href="css/layout.css">
 	</head>
 	<body>
 		<header>
-			<div>
+			<div class="header clear-fix">
 				<div class="logo">
 					<h1>
 						<span class="screen-reader">Google</span>
@@ -19,25 +21,57 @@
 						</a>
 					</h1>
 				</div>
-				<div class="search">
-					<form action="GET" role="search__form">
+				<div class="search clear-fix">
+					<form action="GET" class="search__form" role="search">
 						<div>
-							<input type="search" id="search" name="q" placeholder="SEARCH PLACEHOLDER" aria-label="Search through site content">
-							<button>Search</button>
+							<input type="search" id="search" name="q" aria-label="Search through site content">
+							<a href="#!" class="camera-icon icon"></a>
+							<a href="#!" class="mic-icon icon"></a>
+							<button class="search-icon icon" value="Search"></button>
 						</div>
 					</form>
-					<div class="search__voice"></div>
-					<div class="search__image"></div>
 				</div>
 				<div class="user-nav">
 					<ul>
-						<li>ic1</li>
-						<li>ic2</li>
+						<li class="google-apps">
+							<a href="#!" class="google-apps-icon icon" title="Google Apps"></a>
+						</li>
+						<li class="google-notification">
+							<a href="#!" class="google-notification-icon icon" title="Google Notifications"></a>
+						</li>
+						<li class="google-account">
+							<a href="#!" class="google-accout-icon icon" title="Google Account: Fname Lname (fname@gmail.com)">L</a>
+						</li>
 					</ul>
 				</div>
 			</div>
-			<div class="search-options"></div>
+			<div class="search-options clear-fix">
+				<div class="search-options__type">
+					<ul class="clear-fix">
+						<li><a href="#">All</a></li>
+						<li class="active"><a href="#">Images</a></li>
+						<li><a href="#">Videos</a></li>
+						<li><a href="#">News</a></li>
+						<li><a href="#">Maps</a></li>
+						<li><a href="#">More</a></li>
+					</ul>
+				</div>
+				<div class="search-options__settings">
+					<ul>
+						<li><a href="#">Settings</a></li>
+						<li><a href="#">Tools</a></li>
+					</ul>
+				</div>
+				<div class="search-options__saved-search">
+					<ul>
+						<li><a href="#">View saved</a></li>
+						<li><a href="#">SafeSearch</a></li>
+					</ul>
+				</div>
+			</div>
 		</header>
+
+
 
 		<div class="main-content">
 			<!-->Images geos her</!-->
