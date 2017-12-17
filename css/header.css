@@ -92,6 +92,7 @@ header .header .search {
 
 .search-options ul {
 	margin-bottom: 0;
+	margin-top: 9px;
 }
 
 .search-options ul li {
