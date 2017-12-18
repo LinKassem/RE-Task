@@ -1,4 +1,10 @@
 .main-content {
-	min-height: 100%;
-	margin-bottom: -84px; /* negative height of footer */
+	/*min-height: 100%;*/
+	/*margin-bottom: -84px;*/
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: baseline;
+	/*align-content: space-between;*/
 }
