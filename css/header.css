@@ -63,6 +63,10 @@ header .header .search {
 	vertical-align: top;
 }
 
+.search__form button {
+	cursor: pointer;
+}
+
 .user-nav {
 	float: right;
 	margin-top: 6px;
