@@ -1,8 +1,12 @@
 html, body {
 	font-family: arial,sans-serif;
-	height: 100%;
 	margin: 0;
-	overflow:auto;
+	overflow-y: auto;
 	overflow-x:hidden;
 }
 
+body {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
