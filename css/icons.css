@@ -59,3 +59,9 @@
 	line-height: 32px;
 	text-align: center;
 }
+
+.menu-icon {
+	width: 24px;
+	height: 24px;
+	background-image: url("../images/menu-icon.png");
+}

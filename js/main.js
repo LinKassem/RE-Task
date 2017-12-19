@@ -16,6 +16,14 @@ function flickerAPI(key, httpRequest, queryTags) {
 	});
 }
 
+function openSideNav() {
+	$('.side-nav').css('width', '250px');
+}
+
+function closeSideNav() {
+	$('.side-nav').css('width', '0');
+}
+
 // executed when the HTML document is loaded and the DOM is ready
 $( document ).ready(function() {
 
@@ -33,6 +41,16 @@ $( document ).ready(function() {
 			event.preventDefault();
 		}
 
+	});
+
+	$( '.mobile-menu-icon' ).click(function() {
+		console.log("bismellah");
+		openSideNav();
+
+	});
+
+	$( '.side-nav .close-icon' ).click(function() {
+		closeSideNav();
 	});
 
 });

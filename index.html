@@ -2,12 +2,14 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Document</title>
 		<link href="favicon.ico" rel="shortcut icon">
 		<link rel="stylesheet" type="text/css" href="css/normalize.css">
 		<link rel="stylesheet" type="text/css" href="css/base.css">
 		<link rel="stylesheet" type="text/css" href="css/header.css">
 		<link rel="stylesheet" type="text/css" href="css/icons.css">
+		<link rel="stylesheet" type="text/css" href="css/mobile-side-nav.css">
 		<link rel="stylesheet" href="css/jquery.lazyloadxt.fadein.css">
 		<link rel="stylesheet" type="text/css" href="css/main-content.css">
 		<link rel="stylesheet" type="text/css" href="css/footer.css">
@@ -16,6 +18,7 @@
 	<body>
 		<header>
 			<div class="header clear-fix">
+				<a href="#!" class="display-mobile menu-icon icon mobile-menu-icon"></a>
 				<div class="logo">
 					<h1>
 						<span class="screen-reader">Google</span>
@@ -28,13 +31,13 @@
 					<form action="/" class="search__form" role="search">
 						<div>
 							<input type="search" id="search" name="q" aria-label="Search through site content">
-							<a href="#!" class="camera-icon icon"></a>
-							<a href="#!" class="mic-icon icon"></a>
+							<a href="#!" class="camera-icon icon hide-mobile"></a>
+							<a href="#!" class="mic-icon icon hide-mobile"></a>
 							<button class="search-icon icon" value="Search"></button>
 						</div>
 					</form>
 				</div>
-				<div class="user-nav">
+				<div class="user-nav hide-mobile">
 					<ul>
 						<li class="google-apps">
 							<a href="#!" class="google-apps-icon icon" title="Google Apps"></a>
@@ -59,18 +62,25 @@
 						<li><a href="#">More</a></li>
 					</ul>
 				</div>
-				<div class="search-options__settings">
+				<div class="search-options__settings hide-mobile">
 					<ul>
 						<li><a href="#">Settings</a></li>
 						<li><a href="#">Tools</a></li>
 					</ul>
 				</div>
-				<div class="search-options__saved-search">
+				<div class="search-options__saved-search hide-mobile">
 					<ul>
 						<li><a href="#">View saved</a></li>
 						<li><a href="#">SafeSearch</a></li>
 					</ul>
 				</div>
+			</div>
+			<div class="side-nav">
+				<span class="close-icon"></span>
+				<ul>
+					<li><a href="#">Home</a></li>
+					<li><a href="#">Saved</a></li>
+				</ul>
 			</div>
 		</header>
 		<!--  -->

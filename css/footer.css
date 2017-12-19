@@ -39,3 +39,12 @@ footer a:hover {
 .site-map ul li::first-letter {
 	text-transform: capitalize;
 }
+
+/* mobile phones */
+@media only screen and (max-width: 810px) {
+	.country,
+	.site-map {
+		text-align: center;
+		padding-left: 0;
+	}
+}
