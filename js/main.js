@@ -5,9 +5,11 @@ var url;
 
 function flickerAPI(key, httpRequest, queryTags) {
 
+
 	url = httpRequest + '&api_key=' + key + '&format=json&nojsoncallback=1' + '&tags=' + queryTags + '&extras=url_s' ;
 
 	$.get( url, function( data ) {
+		$('.main-content').empty();
 		for (var i = data.photos.photo.length - 1; i >= 0; i--) {
 			$('.main-content').append( '<div class="image-container"><a><img data-src="'
 				+ data.photos.photo[i].url_s + '" ></a></div>');
@@ -33,10 +35,11 @@ $( document ).ready(function() {
 	// listen for form submission events
 	$( '.search__form' ).submit(function( event ) {
 		queryTags = $( this ).find( "input[name='q']" ).val();
+		console.log(queryTags);
 		if(queryTags.replace(/\s/g, '').length != 0 ) {
-			queryTags = queryTags.split(/[ ,]+/).join(',')
-			$('main-content').empty();
+			queryTags = queryTags.split(/[ ,]+/).join(',');
 			flickerAPI(key, httpRequest, queryTags);
+			event.preventDefault();
 		} else {
 			event.preventDefault();
 		}
