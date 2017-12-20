@@ -1,64 +1,67 @@
 .main-content {
 	-webkit-box-flex: 1;
-	    -ms-flex: 1;
-	        flex: 1;
+		-ms-flex: 1;
+			flex: 1;
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-orient: horizontal;
 	-webkit-box-direction: normal;
-	    -ms-flex-direction: row;
-	        flex-direction: row;
+		-ms-flex-direction: row;
+			flex-direction: row;
 	-ms-flex-wrap: wrap;
-	    flex-wrap: wrap;
+		flex-wrap: wrap;
 	-ms-flex-pack: distribute;
-	    justify-content: space-around;
+		justify-content: space-around;
 	-webkit-box-align: baseline;
-	    -ms-flex-align: baseline;
-	        align-items: baseline;
+		-ms-flex-align: baseline;
+			align-items: baseline;
 	padding: 0 15px;
 	margin-bottom: 10px;
 }
 
 .image-container {
 	margin: 10px 10px 0 0;
+	margin-bottom: 19px;
 }
 
 /* image is not clicked so keep the expanded div hidden */
-.image-container.is-collapsed .image--expanded {
+/*.image-container.is-collapsed .image--expanded {
 	display: none;
-}
+}*/
 
 /* image is clicked so display the expanded div */
-.image-container.is-expanded .image--expanded {
+/*.image-container.is-expanded .image--expanded {
 	display: block;
-}
+}*/
 
 /* when the image is expanded add some margin to the normal image */
 .image-container.is-expanded .image--normal {
-	margin-bottom: 22px;
+	/*margin-bottom: 19px;*/
 	position: relative;
+	transition: 0.2s ease-out;
 }
 
 /* the triangle tip */
 .image-container.is-expanded .image--normal::after {
-    border-bottom: 10px solid red;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    height: 0;
-    position: absolute;
-    width: 0;
-    content: '';
-    left: 50%;
-    bottom: 46%;
-    bottom: -22px;
+	border-bottom: 10px solid red;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	height: 0;
+	position: absolute;
+	width: 0;
+	content: '';
+	left: 50%;
+	bottom: 46%;
+	bottom: -19px;
+	transition: 0.2s ease-out;
 }
 
 .image-info-container {
 	width: 100vw;
 	margin: 0 -15px;
 	background: red;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.2s ease-out;
+	max-height: 0;
+	overflow: hidden;
+	transition: 0.2s ease-out;
 }

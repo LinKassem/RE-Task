@@ -53,13 +53,18 @@ function getLastElementInCurrentRow(element) {
 
 	var bottomOffsetOfelement = element.getBoundingClientRect().bottom;
 
-	for (var i = 1; i < $(element).siblings().length; i++) {
+	for (var i = 0; i < $(element).siblings().length; i++) {
+		console.log(i);
 		if($(element).siblings()[i].getBoundingClientRect().bottom > bottomOffsetOfelement){
-			return $(element).siblings()[i-1];
+			if($(element).next()[0] === $(element).siblings()[i]) {
+				return element
+			} else {
+				return $(element).siblings()[i-1];
+			}
 		}
 	}
 
-	return element;
+	return element.siblings()[$(element).siblings().length - 1];
 }
 
 /**
@@ -115,6 +120,9 @@ $(document).on('click', '.mobile-menu-icon', function() {
 
 $(document).on('click', '.image-container.is-collapsed', function() {
 
+	// close any already expanded divs
+	$('.image-container.is-expanded').click();
+
 	// get the last element in the row after the clicked image
 	var lastRowElement = getLastElementInCurrentRow(this);
 
@@ -124,7 +132,7 @@ $(document).on('click', '.image-container.is-collapsed', function() {
 	// insert the div with the same id as the image data-src value after the lastRowElement
 	$(id).insertAfter( $(lastRowElement) );
 
-	$(id).addClass('is-expanded');
+	// $(id).addClass('is-expanded');
 
 	// get the height of the div and set it to the max-height property.
 	// This is necessary for div expansion transition effect to work.
@@ -136,4 +144,6 @@ $(document).on('click', '.image-container.is-collapsed', function() {
 
 $(document).on('click', '.image-container.is-expanded', function() {
 	$(this).removeClass('is-expanded').addClass('is-collapsed');
+	$(this).find('.image-info-container').css('max-height', '0')
+	$('.main-content').append($('.image-info-container').css('max-height', '0'));
 });
