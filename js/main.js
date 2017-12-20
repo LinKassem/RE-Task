@@ -11,13 +11,13 @@ function flickerAPI(key, httpRequest, queryTags) {
 	console.log(url);
 	$.get( url, function( data ) {
 		for (var i = data.photos.photo.length - 1; i >= 0; i--) {
-			html = '<div class="image is-collapsed">' +
+			html = '<div class="image is-collapsed"' +' id=' + i +'>' +
 						'<div class="image--normal">' +
 							'<a href="#' + data.photos.photo[i].id + '">' +
 								'<img id="' + data.photos.photo[i].id + '" data-src="'+ data.photos.photo[i].url_s + '" >' +
 							'</a>' +
 						'</div>' +
-						'<div class="image--expanded"' +
+						'<div class="image--expanded">' +
 							'<a href="#' + data.photos.photo[i].id + '">' +
 								'<img id="' + data.photos.photo[i].id + '" data-src="'+ data.photos.photo[i].url_s + '" >' +
 							'</a>' +
@@ -27,6 +27,27 @@ function flickerAPI(key, httpRequest, queryTags) {
 		}
 
 	});
+}
+
+/*
+get the last element in the current row
+so that we can place the expanded image after it in the dom
+ */
+/**
+ * Get the last sibling in the row where the passed element lies.
+ * @param  {DOM object} element [element I want to find it's sibling that appears last in the row]
+ * @return {DOM object}        	[element's sibling that appears last in the row]
+ */
+function getLastElementInCurrentRow(element) {
+	var bottomOffsetOfelement = element.getBoundingClientRect().bottom;
+
+	for (var i = 1; i < $(element).siblings().length; i++) {
+		if($(element).siblings()[i].getBoundingClientRect().bottom > bottomOffsetOfelement){
+			return $(element).siblings()[i-1];
+		}
+	}
+
+	return element;
 }
 
 function openSideNav() {
@@ -68,6 +89,9 @@ $(window).on('ajaxComplete', function() {
 	}, 50);
 });
 
+$(document).on('click', '.mobile-menu-icon', function() {
+	openSideNav();
+});
 
 $(document).on('click', '.image.is-collapsed', function() {
 	$(this).removeClass('is-collapsed').addClass('is-expanded');
@@ -75,8 +99,4 @@ $(document).on('click', '.image.is-collapsed', function() {
 
 $(document).on('click', '.image.is-expanded', function() {
 	$(this).removeClass('is-expanded').addClass('is-collapsed');
-});
-
-$(document).on('click', '.mobile-menu-icon', function() {
-	openSideNav();
 });
