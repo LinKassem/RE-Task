@@ -20,28 +20,28 @@
 	margin-bottom: 10px;
 }
 
-.image {
+.image-container {
 	margin: 10px 10px 0 0;
 }
 
 /* image is not clicked so keep the expanded div hidden */
-.image.is-collapsed .image--expanded {
+.image-container.is-collapsed .image--expanded {
 	display: none;
 }
 
 /* image is clicked so display the expanded div */
-.image.is-expanded .image--expanded {
+.image-container.is-expanded .image--expanded {
 	display: block;
 }
 
 /* when the image is expanded add some margin to the normal image */
-.image.is-expanded .image--normal {
+.image-container.is-expanded .image--normal {
 	margin-bottom: 22px;
 	position: relative;
 }
 
 /* the triangle tip */
-.image.is-expanded .image--normal::after {
+.image-container.is-expanded .image--normal::after {
     border-bottom: 10px solid red;
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
@@ -52,4 +52,16 @@
     left: 50%;
     bottom: 46%;
     bottom: -22px;
+}
+
+.info-container {
+	width: 100vw;
+	margin: 0 -15px;
+	height: 50px;
+	background: red;
+	display: none;
+}
+
+.info-container.is-expanded {
+	display: block;
 }

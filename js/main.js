@@ -8,24 +8,24 @@ function flickerAPI(key, httpRequest, queryTags) {
 
 	url = httpRequest + '&api_key=' + key + '&format=json&nojsoncallback=1' + '&tags=' + queryTags + '&extras=url_s' ;
 	var html = '';
+	var html2 = '';
 	console.log(url);
 	$.get( url, function( data ) {
 		for (var i = data.photos.photo.length - 1; i >= 0; i--) {
-			html = '<div class="image is-collapsed"' +' id=' + i +'>' +
+			html = '<div class="image-container is-collapsed"' +' id=' + i +'>' +
 						'<div class="image--normal">' +
 							'<a href="#' + data.photos.photo[i].id + '">' +
-								'<img id="' + data.photos.photo[i].id + '" data-src="'+ data.photos.photo[i].url_s + '" >' +
+								'<img data-src="'+ data.photos.photo[i].url_s + '" >' +
 							'</a>' +
 						'</div>' +
-						'<div class="image--expanded">' +
-							'<a href="#' + data.photos.photo[i].id + '">' +
-								'<img id="' + data.photos.photo[i].id + '" data-src="'+ data.photos.photo[i].url_s + '" >' +
-							'</a>' +
-						'</div>' +
-					'</div>';
-			$('.main-content').append( html);
-		}
+					'</div>' ;
 
+			html2 += '<div class="info-container" id="'+ data.photos.photo[i].id +'"></div>'
+			$('.main-content').append( html);
+
+
+		}
+		$('.main-content').append(html2);
 	});
 }
 
@@ -93,10 +93,20 @@ $(document).on('click', '.mobile-menu-icon', function() {
 	openSideNav();
 });
 
-$(document).on('click', '.image.is-collapsed', function() {
+$(document).on('click', '.image-container.is-collapsed', function() {
+
+	// get the last element in the row after the clicked image
+	var lastRowElement = getLastElementInCurrentRow(this);
+	// get the clicked image href tag, which represents the image id
+	var id = $(this).find('a').attr('href');
+	// insert the div with the same id as the href after the lastRowElement
+	$( id ).insertAfter( $(lastRowElement) );
+	$(id).addClass('is-expanded');
+
 	$(this).removeClass('is-collapsed').addClass('is-expanded');
+
 });
 
-$(document).on('click', '.image.is-expanded', function() {
+$(document).on('click', '.image-container.is-expanded', function() {
 	$(this).removeClass('is-expanded').addClass('is-collapsed');
 });
