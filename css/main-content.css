@@ -54,14 +54,20 @@
     bottom: -22px;
 }
 
-.info-container {
+.image-info-container {
 	width: 100vw;
 	margin: 0 -15px;
-	height: 50px;
 	background: red;
-	display: none;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
 }
 
-.info-container.is-expanded {
-	display: block;
+.image-info-container.is-expanded {
+	/*max-height: 500px;*/
+	/*display: block;*/
+}
+
+.image-info-container.is-expanded div {
+	/*height: 200px;*/
 }

@@ -20,7 +20,7 @@ function flickerAPI(key, httpRequest, queryTags) {
 						'</div>' +
 					'</div>' ;
 
-			html2 += '<div class="info-container" id="'+ data.photos.photo[i].id +'"></div>'
+			html2 += '<div class="image-info-container" id="'+ data.photos.photo[i].id +'"><div>Description. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati veniam aliquam eos eius blanditiis, facilis minus quod nostrum. Dolores recusandae doloremque quam consequatur consequuntur accusantium quos possimus inventore ratione reiciendis!</div></div>'
 			$('.main-content').append( html);
 
 
@@ -28,6 +28,9 @@ function flickerAPI(key, httpRequest, queryTags) {
 		$('.main-content').append(html2);
 	});
 }
+
+
+
 
 /*
 get the last element in the current row
@@ -102,6 +105,19 @@ $(document).on('click', '.image-container.is-collapsed', function() {
 	// insert the div with the same id as the href after the lastRowElement
 	$( id ).insertAfter( $(lastRowElement) );
 	$(id).addClass('is-expanded');
+
+	// if (document.getElementById(id.substr(1)).style.maxHeight){
+ //    	document.getElementById(id.substr(1)).style.maxHeight = null;
+ //    } else {
+ //    	document.getElementById(id.substr(1)).style.maxHeight = document.getElementById(id.substr(1)).scrollHeight + "px";
+ //    }
+ //
+	if ($(id).css('max-height') != '0px'){
+    	$(id).css('max-height', '0');
+    } else {
+    	$(id).css('max-height', $(id).prop("scrollHeight"));
+    	// document.getElementById(id.substr(1)).style.maxHeight = document.getElementById(id.substr(1)).scrollHeight + "px";
+    }
 
 	$(this).removeClass('is-collapsed').addClass('is-expanded');
 
