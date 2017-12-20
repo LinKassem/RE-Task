@@ -7,12 +7,23 @@ function flickerAPI(key, httpRequest, queryTags) {
 
 
 	url = httpRequest + '&api_key=' + key + '&format=json&nojsoncallback=1' + '&tags=' + queryTags + '&extras=url_s' ;
-
+	var html = '';
+	console.log(url);
 	$.get( url, function( data ) {
-		$('.main-content').empty();
 		for (var i = data.photos.photo.length - 1; i >= 0; i--) {
-			$('.main-content').append( '<div class="image-container"><a><img data-src="'
-				+ data.photos.photo[i].url_s + '" ></a></div>');
+			html = '<div class="image is-collapsed">' +
+						'<div class="image--normal">' +
+							'<a href="#' + data.photos.photo[i].id + '">' +
+								'<img id="' + data.photos.photo[i].id + '" data-src="'+ data.photos.photo[i].url_s + '" >' +
+							'</a>' +
+						'</div>' +
+						'<div class="image--expanded"' +
+							'<a href="#' + data.photos.photo[i].id + '">' +
+								'<img id="' + data.photos.photo[i].id + '" data-src="'+ data.photos.photo[i].url_s + '" >' +
+							'</a>' +
+						'</div>' +
+					'</div>';
+			$('.main-content').append( html);
 		}
 
 	});
@@ -37,6 +48,7 @@ $( document ).ready(function() {
 		queryTags = $( this ).find( "input[name='q']" ).val();
 		console.log(queryTags);
 		if(queryTags.replace(/\s/g, '').length != 0 ) {
+			$('.main-content').empty();
 			queryTags = queryTags.split(/[ ,]+/).join(',');
 			flickerAPI(key, httpRequest, queryTags);
 			event.preventDefault();
@@ -44,16 +56,6 @@ $( document ).ready(function() {
 			event.preventDefault();
 		}
 
-	});
-
-	$( '.mobile-menu-icon' ).click(function() {
-		console.log("bismellah");
-		openSideNav();
-
-	});
-
-	$( '.side-nav .close-icon' ).click(function() {
-		closeSideNav();
 	});
 
 });
@@ -64,4 +66,17 @@ $(window).on('ajaxComplete', function() {
 	setTimeout(function() {
 		$(window).lazyLoadXT();
 	}, 50);
+});
+
+
+$(document).on('click', '.image.is-collapsed', function() {
+	$(this).removeClass('is-collapsed').addClass('is-expanded');
+});
+
+$(document).on('click', '.image.is-expanded', function() {
+	$(this).removeClass('is-expanded').addClass('is-collapsed');
+});
+
+$(document).on('click', '.mobile-menu-icon', function() {
+	openSideNav();
 });
