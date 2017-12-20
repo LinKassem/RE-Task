@@ -62,12 +62,3 @@
     overflow: hidden;
     transition: max-height 0.2s ease-out;
 }
-
-.image-info-container.is-expanded {
-	/*max-height: 500px;*/
-	/*display: block;*/
-}
-
-.image-info-container.is-expanded div {
-	/*height: 200px;*/
-}

@@ -14,8 +14,8 @@ function flickerAPI(key, httpRequest, queryTags) {
 		for (var i = data.photos.photo.length - 1; i >= 0; i--) {
 			html = '<div class="image-container is-collapsed"' +' id=' + i +'>' +
 						'<div class="image--normal">' +
-							'<a href="#' + data.photos.photo[i].id + '">' +
-								'<img data-src="'+ data.photos.photo[i].url_s + '" >' +
+							'<a href="#!">' +
+								'<img data-src="'+ data.photos.photo[i].url_s + '" data-id="#' + data.photos.photo[i].id + '" >' +
 							'</a>' +
 						'</div>' +
 					'</div>' ;
@@ -101,7 +101,7 @@ $(document).on('click', '.image-container.is-collapsed', function() {
 	// get the last element in the row after the clicked image
 	var lastRowElement = getLastElementInCurrentRow(this);
 	// get the clicked image href tag, which represents the image id
-	var id = $(this).find('a').attr('href');
+	var id = $(this).find('img').attr('data-id');
 	// insert the div with the same id as the href after the lastRowElement
 	$( id ).insertAfter( $(lastRowElement) );
 	$(id).addClass('is-expanded');
