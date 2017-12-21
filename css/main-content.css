@@ -57,6 +57,29 @@
 	position: relative;
 }
 
+.image-info-container a.previous-image,
+.image-info-container a.next-image {
+	display: block;
+	top: 50%;
+	color: red;
+	position: absolute;
+	height: 80px;
+	width: 32px;
+	background-color: #3D3D3D;
+	background-position: center center;
+	background-repeat: no-repeat;
+	z-index: 2;
+}
+.image-info-container a.previous-image {
+	background-image: url("../images/left-arrow-icon.png");
+	left: 0;
+}
+
+.image-info-container a.next-image {
+	background-image: url("../images/right-arrow-icon.png");
+	right: 0;
+}
+
 .enlarged-image {
 	float: left;
 	width: 62.5%;
@@ -70,4 +93,9 @@
 
 .enlarged-image-info {
 	float: right;
+}
+
+.image-info-container::first-of-type a.previous-image,
+.image-info-container::last-of-type a.next-image-image {
+	display: none;
 }

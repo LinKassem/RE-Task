@@ -1,5 +1,5 @@
 var key = '3fb5e4f43161429e6ff05772449416ef';
-var queryTags = 'sea,birds';
+var queryTags = 'flowers';
 var httpRequest = 'https://api.flickr.com/services/rest/?method=flickr.photos.search';
 var url;
 
@@ -12,7 +12,7 @@ var url;
  */
 function flickerAPI(key, httpRequest, queryTags) {
 
-	url = httpRequest + '&api_key=' + key + '&format=json&nojsoncallback=1' + '&tags=' + queryTags + '&extras=url_s' ;
+	url = httpRequest + '&api_key=' + key + '&format=json&nojsoncallback=1' + '&tags=' + queryTags + '&extras=url_s&per_page=20' ;
 	var imageId = 0;
 	var imageUrl = '';
 	var imageHeight = 0;
@@ -26,15 +26,16 @@ function flickerAPI(key, httpRequest, queryTags) {
 			imageUrl = data.photos.photo[i].url_s;
 			imageHeight = data.photos.photo[i].height_s;
 			imageWidth = data.photos.photo[i].width_s;
-			imageContainer = '<div class="image-container is-collapsed">' +
-						'<div class="image--normal">' +
-							'<a href="#!">' +
-								'<img src="'+ imageUrl + '" data-id="#' + imageId + '" >' +
-							'</a>' +
-						'</div>' +
-					'</div>' ;
+			imageContainer = '<div class="image-container is-collapsed" data-id="' + imageId + '">' +
+								'<div class="image--normal">' +
+									'<a href="#!">' +
+										'<img src="'+ imageUrl + '" data-id="#' + imageId + '" >' +
+									'</a>' +
+								'</div>' +
+							'</div>' ;
 
-			imageInfoContainer +=	'<div class="image-info-container" id="' + imageId + '">' +
+			imageInfoContainer +=	'<div class="image-info-container clear-fix" id="' + imageId + '">' +
+										'<a class="previous-image" href="#!"></a>' +
 										'<div class="enlarged-image">' +
 											'<a href="#!">' +
 												'<img src="' + imageUrl + '" height="'+ (imageHeight * 2) + '" width="' + (imageWidth * 2) + '">' +
@@ -91,6 +92,7 @@ function flickerAPI(key, httpRequest, queryTags) {
 												'</ul>' +
 											'</div>' +
 										'</div>' +
+										'<a class="next-image" href="#!"></a>' +
 									'</div>';
 
 
@@ -200,5 +202,29 @@ $(document).on('click', '.image-container.is-collapsed', function() {
 $(document).on('click', '.image-container.is-expanded', function() {
 	$(this).removeClass('is-expanded').addClass('is-collapsed');
 	$('.main-content').find('.image-info-container').css('max-height', '0');
-	$('.main-content').append($(this).find('.image-info-container'));
+	$('.main-content').append($('.main-content').find('.image-info-container'));
 });
+
+$(document).on('click', 'a.previous-image', function() {
+	var id = $(this).parent().attr('id');
+	$('.main-content').find('[data-id="'+ id +'"]').prev().click();
+});
+
+$(document).on('click', 'a.next-image', function() {
+	var id = $(this).parent().attr('id');
+
+	if($('.main-content').find('div[data-id="'+ id +'"]').next().attr('class').indexOf('image-info-container') == -1) {
+		$('.main-content').find('div[data-id="'+ id +'"]').next().click();
+	} else {
+		var element = $('.main-content').find('div[data-id="'+ id +'"]').next().next();
+		// $('.main-content').find('[data-id="'+ id +'"]').next().next().click();
+		// $(element).click();
+		// console.log(element);
+
+		var element = $('.main-content').find('div[data-id="'+ id +'"]').next().next().click();
+
+
+	}
+
+});
+
