@@ -15,17 +15,21 @@ function flickerAPI(key, httpRequest, queryTags) {
 	url = httpRequest + '&api_key=' + key + '&format=json&nojsoncallback=1' + '&tags=' + queryTags + '&extras=url_s' ;
 	var imageId = 0;
 	var imageUrl = '';
+	var imageHeight = 0;
+	var imageWidth = 0;
 	var imageContainer = '';
 	var imageInfoContainer = '';
-	// console.log(url);
+	console.log(url);
 	$.get( url, function( data ) {
 		for (var i = 0; i <= data.photos.photo.length - 1; i++) {
 			imageId = data.photos.photo[i].id;
 			imageUrl = data.photos.photo[i].url_s;
+			imageHeight = data.photos.photo[i].height_s;
+			imageWidth = data.photos.photo[i].width_s;
 			imageContainer = '<div class="image-container is-collapsed">' +
 						'<div class="image--normal">' +
 							'<a href="#!">' +
-								'<img data-src="'+ imageUrl + '" data-id="#' + imageId + '" >' +
+								'<img src="'+ imageUrl + '" data-id="#' + imageId + '" >' +
 							'</a>' +
 						'</div>' +
 					'</div>' ;
@@ -33,7 +37,7 @@ function flickerAPI(key, httpRequest, queryTags) {
 			imageInfoContainer +=	'<div class="image-info-container" id="' + imageId + '">' +
 										'<div class="enlarged-image">' +
 											'<a href="#!">' +
-												'<img src="' + imageUrl + '">' +
+												'<img src="' + imageUrl + '" height="'+ (imageHeight * 2) + '" width="' + (imageWidth * 2) + '">' +
 											'</a>' +
 										'</div>' +
 										'<div class="enlarged-image-info">' +
@@ -161,14 +165,6 @@ $( document ).ready(function() {
 
 });
 
-// executed when the page is fully loaded with the all
-// the images that resulted from the initial flickerAPI usage
-$(window).on('ajaxComplete', function() {
-	setTimeout(function() {
-		$(window).lazyLoadXT();
-	}, 50);
-});
-
 $(document).on('click', '.mobile-menu-icon', function() {
 	openSideNav();
 });
@@ -187,11 +183,15 @@ $(document).on('click', '.image-container.is-collapsed', function() {
 	// insert the div with the same id as the image data-src value after the lastRowElement
 	$(id).insertAfter( $(lastRowElement) );
 
-	// $(id).addClass('is-expanded');
-
 	// get the height of the div and set it to the max-height property.
 	// This is necessary for div expansion transition effect to work.
 	$(id).css('max-height', $(id).prop("scrollHeight"));
+
+	setTimeout(function(){
+		$('html, body').animate({
+			scrollTop: $(id).offset().top - 50
+		}, 1000);
+	}, 200);
 
 	$(this).removeClass('is-collapsed').addClass('is-expanded');
 
@@ -199,6 +199,6 @@ $(document).on('click', '.image-container.is-collapsed', function() {
 
 $(document).on('click', '.image-container.is-expanded', function() {
 	$(this).removeClass('is-expanded').addClass('is-collapsed');
-	$(this).find('.image-info-container').css('max-height', '0');
+	$('.main-content').find('.image-info-container').css('max-height', '0');
 	$('.main-content').append($(this).find('.image-info-container'));
 });
