@@ -19,9 +19,11 @@ function flickerAPI(key, httpRequest, queryTags) {
 	var imageWidth = 0;
 	var imageContainer = '';
 	var imageInfoContainer = '';
+	var imagesCount = 0;
 	console.log(url);
 	$.get( url, function( data ) {
-		for (var i = 0; i <= data.photos.photo.length - 1; i++) {
+		imagesCount = data.photos.photo.length;
+		for (var i = 0; i <= imagesCount - 1; i++) {
 			imageId = data.photos.photo[i].id;
 			imageUrl = data.photos.photo[i].url_s;
 			imageHeight = data.photos.photo[i].height_s;
@@ -102,7 +104,21 @@ function flickerAPI(key, httpRequest, queryTags) {
 
 		$('.main-content').append(imageInfoContainer);
 
+		hideExpandedImgNavigation(imagesCount);
+
 	});
+}
+
+/**
+ * Hide the left navingation link of the first .image-container element
+ * 	and hide the right navigation link of the last .image-container
+ * @return {[type]} [description]
+ */
+function hideExpandedImgNavigation(imagesCount) {
+	var firstImageId = $($('.main-content').find('.image-container')[0]).attr('data-id');
+	var lastImageId = $($('.main-content').find('.image-container')[imagesCount - 1]).attr('data-id');
+	$('#' + firstImageId).find('a.previous-image').css('display', 'none');
+	$('#' + lastImageId).find('a.next-image').css('display', 'none');
 }
 
 /**
@@ -115,7 +131,6 @@ function getLastElementInCurrentRow(element) {
 	var bottomOffsetOfelement = element.getBoundingClientRect().bottom;
 
 	for (var i = 0; i < $(element).siblings().length; i++) {
-		console.log(i);
 		if($(element).siblings()[i].getBoundingClientRect().bottom > bottomOffsetOfelement){
 			if($(element).next()[0] === $(element).siblings()[i]) {
 				return element
@@ -153,7 +168,6 @@ $( document ).ready(function() {
 	// listen for form submission events
 	$( '.search__form' ).submit(function( event ) {
 		queryTags = $( this ).find( "input[name='q']" ).val();
-		console.log(queryTags);
 		if(queryTags.replace(/\s/g, '').length != 0 ) {
 			$('.main-content').empty();
 			queryTags = queryTags.split(/[ ,]+/).join(',');
