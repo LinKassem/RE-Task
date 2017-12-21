@@ -54,5 +54,20 @@
 	max-height: 0;
 	overflow: hidden;
 	transition: 0.2s ease-out;
+	position: relative;
 }
 
+.enlarged-image {
+	float: left;
+	width: 62.5%;
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	text-align: center;
+}
+
+.enlarged-image-info {
+	float: right;
+}

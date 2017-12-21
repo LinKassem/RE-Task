@@ -21,23 +21,24 @@ function flickerAPI(key, httpRequest, queryTags) {
 	$.get( url, function( data ) {
 		for (var i = 0; i <= data.photos.photo.length - 1; i++) {
 			imageId = data.photos.photo[i].id;
+			imageUrl = data.photos.photo[i].url_s;
 			imageContainer = '<div class="image-container is-collapsed">' +
 						'<div class="image--normal">' +
 							'<a href="#!">' +
-								'<img data-src="'+ data.photos.photo[i].url_s + '" data-id="#' + imageId + '" >' +
+								'<img data-src="'+ imageUrl + '" data-id="#' + imageId + '" >' +
 							'</a>' +
 						'</div>' +
 					'</div>' ;
 
-			imageInfoContainer +=	'<div class="image-info-container" id=">' + imageId + '">' +
+			imageInfoContainer +=	'<div class="image-info-container" id="' + imageId + '">' +
 										'<div class="enlarged-image">' +
 											'<a href="#!">' +
-												'<img src="' + data.photos.photo[i].url_s + '">' +
+												'<img src="' + imageUrl + '">' +
 											'</a>' +
 										'</div>' +
 										'<div class="enlarged-image-info">' +
 											'<div class="title">' +
-												'<a href="#!">' + Tile +'</a>' +
+												'<a href="#!">' + 'Title' +'</a>' +
 											'</div>' +
 											'<div class="detailed-info">' +
 												'<ul>' +
@@ -57,38 +58,36 @@ function flickerAPI(key, httpRequest, queryTags) {
 														'<a>' +
 															'<img src="../images/testImage.jpeg">' +
 														'</a>' +
-													'</li>' +
-													'<li>' +
-														'<a>' +
-															'<img src="../images/testImage.jpeg">' +
-														'</a>' +
-													'</li>' +
-													'<li>' +
-														'<a>' +
-															'<img src="../images/testImage.jpeg">' +
-														'</a>' +
-													'</li>' +
-													'<li>' +
-														'<a>' +
-															'<img src="../images/testImage.jpeg">' +
-														'</a>' +
-													'</li>' +
-													'<li>' +
-														'<a>' +
-															'<img src="../images/testImage.jpeg">' +
-														'</a>' +
-													'</li>' +
-													'<li>' +
-														'<a>' +
-															'<img src="../images/testImage.jpeg">' +
-														'</a>' +
-													'</li>' +
+													// '</li>' +
+													// '<li>' +
+													// 	'<a>' +
+													// 		'<img src="../images/testImage.jpeg">' +
+													// 	'</a>' +
+													// '</li>' +
+													// '<li>' +
+													// 	'<a>' +
+													// 		'<img src="../images/testImage.jpeg">' +
+													// 	'</a>' +
+													// '</li>' +
+													// '<li>' +
+													// 	'<a>' +
+													// 		'<img src="../images/testImage.jpeg">' +
+													// 	'</a>' +
+													// '</li>' +
+													// '<li>' +
+													// 	'<a>' +
+													// 		'<img src="../images/testImage.jpeg">' +
+													// 	'</a>' +
+													// '</li>' +
+													// '<li>' +
+													// 	'<a>' +
+													// 		'<img src="../images/testImage.jpeg">' +
+													// 	'</a>' +
+													// '</li>' +
 												'</ul>' +
 											'</div>' +
 										'</div>' +
 									'</div>';
-
-
 
 
 			$('.main-content').append( imageContainer );
