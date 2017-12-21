@@ -14,6 +14,7 @@ function flickerAPI(key, httpRequest, queryTags) {
 
 	url = httpRequest + '&api_key=' + key + '&format=json&nojsoncallback=1' + '&tags=' + queryTags + '&extras=url_s' ;
 	var imageId = 0;
+	var imageUrl = '';
 	var imageContainer = '';
 	var imageInfoContainer = '';
 	// console.log(url);
@@ -28,11 +29,66 @@ function flickerAPI(key, httpRequest, queryTags) {
 						'</div>' +
 					'</div>' ;
 
-			imageInfoContainer += '<div class="image-info-container" id="'+ imageId +'">'+
-									'<div>'+
-										'Description. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati veniam aliquam eos eius blanditiis, facilis minus quod nostrum. Dolores recusandae doloremque quam consequatur consequuntur accusantium quos possimus inventore ratione reiciendis!' +
-									'</div>' +
-								'</div>'
+			imageInfoContainer +=	'<div class="image-info-container" id=">' + imageId + '">' +
+										'<div class="enlarged-image">' +
+											'<a href="#!">' +
+												'<img src="' + data.photos.photo[i].url_s + '">' +
+											'</a>' +
+										'</div>' +
+										'<div class="enlarged-image-info">' +
+											'<div class="title">' +
+												'<a href="#!">' + Tile +'</a>' +
+											'</div>' +
+											'<div class="detailed-info">' +
+												'<ul>' +
+													'<li>' + 'youtube' + '</li>' +
+													'<li>' + 'youtube' + '</li>' +
+													'<li>' + 'youtube' + '</li>' +
+												'</ul>' +
+											'</div>' +
+											'<div>' +
+												'<button>' + 'button 1' + '</button>' +
+												'<button>' + 'button 2' + '</button>' +
+												'<button>' + 'button 3' + '</button>' +
+											'</div>' +
+											'<div class="related-images">' +
+												'<ul>' +
+													'<li>' +
+														'<a>' +
+															'<img src="../images/testImage.jpeg">' +
+														'</a>' +
+													'</li>' +
+													'<li>' +
+														'<a>' +
+															'<img src="../images/testImage.jpeg">' +
+														'</a>' +
+													'</li>' +
+													'<li>' +
+														'<a>' +
+															'<img src="../images/testImage.jpeg">' +
+														'</a>' +
+													'</li>' +
+													'<li>' +
+														'<a>' +
+															'<img src="../images/testImage.jpeg">' +
+														'</a>' +
+													'</li>' +
+													'<li>' +
+														'<a>' +
+															'<img src="../images/testImage.jpeg">' +
+														'</a>' +
+													'</li>' +
+													'<li>' +
+														'<a>' +
+															'<img src="../images/testImage.jpeg">' +
+														'</a>' +
+													'</li>' +
+												'</ul>' +
+											'</div>' +
+										'</div>' +
+									'</div>';
+
+
 
 
 			$('.main-content').append( imageContainer );
@@ -144,6 +200,6 @@ $(document).on('click', '.image-container.is-collapsed', function() {
 
 $(document).on('click', '.image-container.is-expanded', function() {
 	$(this).removeClass('is-expanded').addClass('is-collapsed');
-	$(this).find('.image-info-container').css('max-height', '0')
-	$('.main-content').append($('.image-info-container').css('max-height', '0'));
+	$(this).find('.image-info-container').css('max-height', '0');
+	$('.main-content').append($(this).find('.image-info-container'));
 });

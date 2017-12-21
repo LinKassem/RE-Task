@@ -25,16 +25,6 @@
 	margin-bottom: 19px;
 }
 
-/* image is not clicked so keep the expanded div hidden */
-/*.image-container.is-collapsed .image--expanded {
-	display: none;
-}*/
-
-/* image is clicked so display the expanded div */
-/*.image-container.is-expanded .image--expanded {
-	display: block;
-}*/
-
 /* when the image is expanded add some margin to the normal image */
 .image-container.is-expanded .image--normal {
 	/*margin-bottom: 19px;*/
@@ -44,7 +34,7 @@
 
 /* the triangle tip */
 .image-container.is-expanded .image--normal::after {
-	border-bottom: 10px solid red;
+	border-bottom: 10px solid #222222;
 	border-left: 10px solid transparent;
 	border-right: 10px solid transparent;
 	height: 0;
@@ -60,8 +50,9 @@
 .image-info-container {
 	width: 100vw;
 	margin: 0 -15px;
-	background: red;
+	background: #222222;
 	max-height: 0;
 	overflow: hidden;
 	transition: 0.2s ease-out;
 }
+
