@@ -80,6 +80,14 @@
 	right: 0;
 }
 
+.image-info-container a.close-icon {
+	display: block;
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	background-size: auto;
+}
+
 .image-info-container .enlarged-image,
 .image-info-container .enlarged-image-info {
 	display: inline-block;

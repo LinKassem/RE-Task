@@ -34,7 +34,7 @@
 	color: #222;
 }
 
-.close-icon::after {
+.side-nav .close-icon::after {
 	content: 'x';
 	position: absolute;
 	top: 25px;

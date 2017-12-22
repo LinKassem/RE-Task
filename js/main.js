@@ -134,6 +134,7 @@ function flickerAPI(key, httpRequest, queryTags) {
 											'</div>' +
 										'</div>' +
 										'<a class="next-image" href="#!"></a>' +
+										'<a href="#!" class="icon close-icon"></a>' +
 									'</div>';
 
 
@@ -277,4 +278,8 @@ $(document).on('click', 'a.next-image', function() {
 $(document).on('click', '.related-images ul li', function() {
 	$('.related-images').find('li.active').removeClass('active');
 	$(this).addClass('active');
+});
+
+$(document).on('click', '.image-info-container .close-icon', function() {
+	$('.image-container.is-expanded').click();
 });
