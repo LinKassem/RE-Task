@@ -20,7 +20,13 @@ function flickerAPI(key, httpRequest, queryTags) {
 	var imageContainer = '';
 	var imageInfoContainer = '';
 	var imagesCount = 0;
+	var imageTitle = '';
+	var maxEnlargedImageHeight = 395;
+	var enlargedHeight = 0;
+	var enlargedWidth = 0;
+
 	console.log(url);
+
 	$.get( url, function( data ) {
 		imagesCount = data.photos.photo.length;
 		for (var i = 0; i <= imagesCount - 1; i++) {
@@ -28,6 +34,15 @@ function flickerAPI(key, httpRequest, queryTags) {
 			imageUrl = data.photos.photo[i].url_s;
 			imageHeight = data.photos.photo[i].height_s;
 			imageWidth = data.photos.photo[i].width_s;
+			imageTitle = data.photos.photo[i].title;
+
+			enlargedHeight = imageHeight * 2;
+			enlargedWidth = imageWidth * 2;
+
+			if( enlargedHeight > 380 ) {
+				enlargedHeight = 380;
+			}
+
 			imageContainer = '<div class="image-container is-collapsed" data-id="' + imageId + '">' +
 								'<div class="image--normal">' +
 									'<a href="#!">' +
@@ -40,58 +55,82 @@ function flickerAPI(key, httpRequest, queryTags) {
 										'<a class="previous-image" href="#!"></a>' +
 										'<div class="enlarged-image">' +
 											'<a href="#!">' +
-												'<img src="' + imageUrl + '" height="'+ (imageHeight * 2) + '" width="' + (imageWidth * 2) + '">' +
+												'<img src="' + imageUrl + '" height="'+ enlargedHeight + '" width="' + enlargedWidth + '">' +
 											'</a>' +
 										'</div>' +
 										'<div class="enlarged-image-info">' +
-											'<div class="title">' +
-												'<a href="#!">' + 'Title' +'</a>' +
+											'<div class="inner-container">' +
+												'<div class="title">' +
+													'<a href="#!">' + imageTitle +'</a>' +
+												'</div>' +
+												'<div class="detailed-info">' +
+													'<div class="info"><a href="#!">' + 'source.com' + '</a></div>' +
+													'<div class="info"><a href="#!">' + imageWidth + ' x ' + imageHeight + '</a></div>' +
+													'<div class="info"><a href="#!">' + 'search by img' + '</a></div>' +
+													'<div class="description">' + 'Image description' + '</div>' +
+												'</div>' +
+												'<div class="options">' +
+													'<ul>' +
+														'<li><a href="#!"><span class="visit-icon icon"></span>'+ 'Visit' + '</a></li>' +
+														'<li><a href="#!">'+ 'View Image' + '</a></li>' +
+														'<li><a href="#!><span class="save-icon icon"></span>'+ 'Save' + '</a></li>' +
+														'<li><a href="#!">'+ 'view saved' + '</a></li>' +
+														'<li><a href="#!"><span class="share-icon icon"></span>'+ 'Share' + '</a></li>' +
+													'</ul>' +
+												'</div>' +
 											'</div>' +
-											'<div class="detailed-info">' +
+											'<div class="related-images">' +
+												'<span> Related images: </span>' +
 												'<ul>' +
-													'<li>' + 'youtube' + '</li>' +
-													'<li>' + 'youtube' + '</li>' +
-													'<li>' + 'youtube' + '</li>' +
+													'<li class="active">' +
+														'<a href="#!">' +
+															'<img src="../images/related-image.png">' +
+														'</a>' +
+													'</li>' +
+													'<li>' +
+														'<a href="#!">' +
+															'<img src="../images/related-image.png">' +
+														'</a>' +
+													'</li>' +
+													'<li>' +
+														'<a href="#!">' +
+															'<img src="../images/related-image.png">' +
+														'</a>' +
+													'</li>' +
+													'<li>' +
+														'<a href="#!">' +
+															'<img src="../images/related-image.png">' +
+														'</a>' +
+													'</li>' +
+													'<li>' +
+														'<a href="#!">' +
+															'<img src="../images/related-image.png">' +
+														'</a>' +
+													'</li>' +
+													'<li>' +
+														'<a href="#!">' +
+															'<img src="../images/related-image.png">' +
+														'</a>' +
+													'</li>' +
+													'<li>' +
+														'<a href="#!">' +
+															'<img src="../images/related-image.png">' +
+														'</a>' +
+													'</li>' +
+													'<li>' +
+														'<a href="#!">' +
+															'<img src="../images/related-image.png">' +
+														'</a>' +
+														'<span>View More</span>' +
+													'</li>' +
 												'</ul>' +
 											'</div>' +
 											'<div>' +
-												'<button>' + 'button 1' + '</button>' +
-												'<button>' + 'button 2' + '</button>' +
-												'<button>' + 'button 3' + '</button>' +
-											'</div>' +
-											'<div class="related-images">' +
-												'<ul>' +
-													'<li>' +
-														'<a>' +
-															'<img src="../images/testImage.jpeg">' +
-														'</a>' +
-													// '</li>' +
-													// '<li>' +
-													// 	'<a>' +
-													// 		'<img src="../images/testImage.jpeg">' +
-													// 	'</a>' +
-													// '</li>' +
-													// '<li>' +
-													// 	'<a>' +
-													// 		'<img src="../images/testImage.jpeg">' +
-													// 	'</a>' +
-													// '</li>' +
-													// '<li>' +
-													// 	'<a>' +
-													// 		'<img src="../images/testImage.jpeg">' +
-													// 	'</a>' +
-													// '</li>' +
-													// '<li>' +
-													// 	'<a>' +
-													// 		'<img src="../images/testImage.jpeg">' +
-													// 	'</a>' +
-													// '</li>' +
-													// '<li>' +
-													// 	'<a>' +
-													// 		'<img src="../images/testImage.jpeg">' +
-													// 	'</a>' +
-													// '</li>' +
-												'</ul>' +
+												'<div class="copy-rights">Images may be subject to copyright.</div>' +
+												'<div class="support">' +
+													'<a href="#!">Get Help</a>' +
+													'<a href="#!">Send feedback</a>' +
+												'</div>' +
 											'</div>' +
 										'</div>' +
 										'<a class="next-image" href="#!"></a>' +
@@ -179,14 +218,6 @@ $( document ).ready(function() {
 
 	});
 
-	// var numberOfImages = $('.main-content').find('.image-container').length;
-	// var firstImageId = $($('.main-content').find('.image-container')[0]).attr('data-id');
-	// var lastImageId = $($('.main-content').find('.image-container')[numberOfImages]).attr('data-id');
-
-	// console.log($('#' + firstImageId));
-	// $('#' + firstImageId).find('a.previous-image').css('display', 'none');
-	// $('#' + lastImageId).find('a.next-image').css('display', 'none');
-
 });
 
 $(document).on('click', '.mobile-menu-icon', function() {
@@ -243,3 +274,7 @@ $(document).on('click', 'a.next-image', function() {
 
 });
 
+$(document).on('click', '.related-images ul li', function() {
+	$('.related-images').find('li.active').removeClass('active');
+	$(this).addClass('active');
+});
