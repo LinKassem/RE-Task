@@ -47,6 +47,7 @@ function flickerAPI(key, httpRequest, queryTags) {
 								'<div class="image--normal">' +
 									'<a href="#!">' +
 										'<img src="'+ imageUrl + '" data-id="#' + imageId + '" >' +
+										'<span>' + imageWidth + 'x' + imageHeight + ' - source.com' + '</span>' +
 									'</a>' +
 								'</div>' +
 							'</div>' ;
