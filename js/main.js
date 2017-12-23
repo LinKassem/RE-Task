@@ -293,3 +293,23 @@ $(document).on('click', '.related-images ul li', function() {
 $(document).on('click', '.image-info-container .close-icon', function() {
 	$('.image-container.is-expanded').click();
 });
+
+$(document).keydown(function(e) {
+	switch(e.which) {
+		case 37: // left
+			$($('.main-content').find('.image-info-container')[0]).find('a.previous-image').click();
+		break;
+
+		case 39: // right
+			$($('.main-content').find('.image-info-container')[0]).find('a.next-image').click();
+		break;
+
+		case 27: // esc
+			$($('.main-content').find('.image-info-container')[0]).find('a.close-icon').click();
+		break;
+
+		default: return;
+	}
+
+	e.preventDefault();
+});
