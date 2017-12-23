@@ -230,33 +230,43 @@ $(document).on('click', '.image-container.is-collapsed', function() {
 	// close any already expanded divs
 	$('.image-container.is-expanded').click();
 
-	// get the last element in the row after the clicked image
-	var lastRowElement = getLastElementInCurrentRow(this);
-
-	// get the clicked image data-id attribute value
-	var id = $(this).find('img').attr('data-id');
-
-	// insert the div with the same id as the image data-src value after the lastRowElement
-	$(id).insertAfter( $(lastRowElement) );
-
-	// get the height of the div and set it to the max-height property.
-	// This is necessary for div expansion transition effect to work.
-	$(id).css('max-height', $(id).prop("scrollHeight"));
+	// save reference of the element for use inside the setTimeout function
+	var clickedElement = this;
 
 	setTimeout(function(){
-		$('html, body').animate({
-			scrollTop: $(id).offset().top - 50
-		}, 1000);
+		// get the last element in the row after the clicked image
+		var lastRowElement = getLastElementInCurrentRow(clickedElement);
+
+		// get the clicked image data-id attribute value
+		var id = $(clickedElement).find('img').attr('data-id');
+
+		// insert the div with the same id as the image data-src value after the lastRowElement
+		$(id).insertAfter( $(lastRowElement) );
+
+		// get the height of the div and set it to the max-height property.
+		// This is necessary for div expansion transition effect to work.
+		$(id).css('max-height', $(id).prop("scrollHeight"));
+
+		setTimeout(function(){
+			$('html, body').animate({
+				scrollTop: $(id).offset().top - 50
+			}, 1000);
+		}, 200);
+
+		$(clickedElement).removeClass('is-collapsed').addClass('is-expanded');
+
 	}, 200);
-
-	$(this).removeClass('is-collapsed').addClass('is-expanded');
-
 });
 
 $(document).on('click', '.image-container.is-expanded', function() {
 	$(this).removeClass('is-expanded').addClass('is-collapsed');
 	$('.main-content').find('.image-info-container').css('max-height', '0');
-	$('.main-content').append($('.main-content').find('.image-info-container'));
+
+	// wait for the transition of the max-height to finish before changing it's position
+	setTimeout(function(){
+		$('.main-content').append($('.main-content').find('.image-info-container'));
+	}, 200);
+
 });
 
 $(document).on('click', 'a.previous-image', function() {
