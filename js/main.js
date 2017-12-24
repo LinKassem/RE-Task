@@ -315,6 +315,10 @@ $(document).on('click', '.image-info-container .close-icon', function() {
 	$('.image-container.is-expanded').click();
 });
 
+$(document).on('click', '.dropdown-container', function() {
+	$('.dropdown-container').toggleClass('open');
+});
+
 $(document).keydown(function(e) {
 	switch(e.which) {
 		case 37: // left
