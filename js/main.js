@@ -53,7 +53,7 @@ function flickerAPI(key, httpRequest, queryTags) {
 							'</div>' ;
 
 			imageInfoContainer +=	'<div class="image-info-container clear-fix" id="' + imageId + '">' +
-										'<a class="previous-image" href="#!"></a>' +
+										'<a class="previous-image hide-mobile" href="#!"></a>' +
 										'<div class="enlarged-image">' +
 											'<a href="#!">' +
 												'<img src="' + imageUrl + '" height="'+ enlargedHeight + '" width="' + enlargedWidth + '">' +
@@ -134,7 +134,7 @@ function flickerAPI(key, httpRequest, queryTags) {
 												'</div>' +
 											'</div>' +
 										'</div>' +
-										'<a class="next-image" href="#!"></a>' +
+										'<a class="next-image hide-mobile" href="#!"></a>' +
 										'<a href="#!" class="icon close-icon"></a>' +
 									'</div>';
 
@@ -212,6 +212,14 @@ function relatedTagsSlickCarousel() {
 		variableWidth: true,
 		speed: 300,
 		accessibility: true,
+		responsive: [
+			{
+			breakpoint: 810,
+				settings: {
+					arrows: false
+			  }
+			},
+		  ]
 	});
 
 	$('.related-tags .slick-next.slick-arrow ').html('');
@@ -244,6 +252,10 @@ $( document ).ready(function() {
 
 $(document).on('click', '.mobile-menu-icon', function() {
 	openSideNav();
+});
+
+$(document).on('click', '.side-nav .close-icon', function() {
+	closeSideNav();
 });
 
 $(document).on('click', '.image-container.is-collapsed', function() {

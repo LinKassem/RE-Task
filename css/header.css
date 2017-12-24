@@ -219,11 +219,10 @@ header .header .search {
 }
 
 /* mobile phones */
-@media only screen and (max-width: 810px) {
+@media (max-width: 810px) {
 
 	header {
 		padding: 0;
-		border: 1px solid red;
 	}
 
 	header h1 {
@@ -253,7 +252,7 @@ header .header .search {
 	}
 
 	.search {
-		width: 95%;
+		width: 88%;
 		float: none;
 		margin: 0 auto;
 		margin-top: 20px;
@@ -273,6 +272,7 @@ header .header .search {
 	.search__form button {
 		width: 10%;
 		position: absolute;
+		top: -8px;
 	}
 
 	.menu-icon {

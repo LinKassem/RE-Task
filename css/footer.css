@@ -39,7 +39,7 @@ footer a:hover {
 }
 
 /* mobile phones */
-@media only screen and (max-width: 810px) {
+@media (max-width: 810px) {
 	.country,
 	.site-map {
 		text-align: center;
