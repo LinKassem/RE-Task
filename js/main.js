@@ -200,11 +200,31 @@ function closeSideNav() {
 	$('.side-nav').css('width', '0');
 }
 
+/**
+ * Initialize the slick carousel for the related tags
+ * @return {none}
+ */
+function relatedTagsSlickCarousel() {
+	$('.related-tags').slick({
+		infinite: true,
+		slidesToShow: 15,
+		slidesToScroll: 15,
+		variableWidth: true,
+		speed: 300,
+		accessibility: true,
+	});
+
+	$('.related-tags .slick-next.slick-arrow ').html('');
+	$('.related-tags .slick-prev.slick-arrow ').html('');
+}
+
 // executed when the HTML document is loaded and the DOM is ready
 $( document ).ready(function() {
 
 	// trigger the flickerAPI so that initially there is content on the page
 	flickerAPI(key, httpRequest, queryTags);
+
+	relatedTagsSlickCarousel();
 
 	// listen for form submission events
 	$( '.search__form' ).submit(function( event ) {

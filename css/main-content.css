@@ -33,15 +33,15 @@
 
 .image-container .image--normal span {
 	display: none;
-    height: 15px;
-    position: absolute;
-    width: 100%;
-    line-height: 15px;
-    font-size: 11px;
-    margin-top: -15px;
-    color: #FFF;
+	height: 15px;
+	position: absolute;
+	width: 100%;
+	line-height: 15px;
+	font-size: 11px;
+	margin-top: -15px;
+	color: #FFF;
 	background:rgba(0,0,0,0.7);
-    padding-left: 5px;
+	padding-left: 5px;
 }
 
 .image-container .image--normal:hover span {
@@ -83,7 +83,6 @@
 .image-info-container a.next-image {
 	display: block;
 	top: calc( 50% - 40px);
-	color: red;
 	position: absolute;
 	height: 80px;
 	width: 32px;
@@ -317,4 +316,67 @@
 
 .support a:hover {
 	color: #d6d6d6;
+}
+
+.related-tags {
+	padding: 0 5px 2px 17px;
+	margin-top: 14px;
+	position: relative;
+	overflow: hidden;
+}
+
+.related-tags div a {
+	display: block;
+	font-size: 14px;
+	line-height: 14px;
+	text-align: center;
+	padding: 16px;
+	margin-right: 8px;
+	color: #fff;
+	border-radius: 3px;
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+	background-color: #1FBCD3;
+}
+
+.related-tags .slick-next.slick-arrow,
+.related-tags .slick-prev.slick-arrow {
+	z-index: 2;
+	cursor: pointer;
+	font-size: medium;
+	font-weight: normal;
+	width: 36px;
+	height: 63px;
+	margin-top: -59px;
+	display: inline-block;
+	outline: none;
+	opacity: 0.8;
+	transition: opacity 0.5s,visibility 0.5s;
+	top: -8px;
+	background-color: rgba(229, 229, 229, .8);
+	box-shadow: -1px 0 2px rgba(0, 0, 0, 0.5);
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+.related-tags .slick-next.slick-arrow:hover,
+.related-tags .slick-prev.slick-arrow:hover {
+	opacity: 0.9;
+}
+
+.related-tags .slick-next.slick-arrow {
+	background-image: url('../images/right-arrow-icon.png');
+	position: absolute;
+	top: 100%;
+	right: 0;
+	border-bottom-left-radius: 36px;
+	border-top-left-radius: 36px;
+}
+
+.related-tags .slick-prev.slick-arrow {
+	background-image: url('../images/left-arrow-icon.png');
+	position: absolute;
+	top: 100%;
+	border-bottom-right-radius: 36px;
+	border-top-right-radius: 36px;
 }
