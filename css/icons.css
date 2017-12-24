@@ -89,6 +89,8 @@
 
 .close-icon {
 	background-image: url("../images/close-icon.png");
+	width: 24px;
+	height: 24px;
 }
 
 .previous-icon {
